@@ -15,7 +15,7 @@ class QuestionsController extends Controller
     public function index()
     {
         // \DB::enableQueryLog();
-        $questions = Question::with('user')->latest()->paginate(5);
+        $questions = Question::with('user')->latest()->paginate(10);
         return view('questions.index', compact('questions'));
         // view('questions.index', compact('questions'))->render();
         // dd(\DB::getQueryLog());
@@ -28,7 +28,8 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        //
+        $question = new Question();
+        return view('questions.create', compact('question'));
     }
 
     /**
