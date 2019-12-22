@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use Parsedown;
+use App\Answer;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,7 +34,7 @@ class Question extends Model
 
     public function getStatusAttribute()
     {
-        if ($this->answers > 0) {
+        if ($this->answers_count > 0) {
             if ($this->best_answer_id) {
                 return "answered-accepted";
             }
@@ -46,4 +47,12 @@ class Question extends Model
     {
         return \Parsedown::instance()->text($this->body);
     }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+        // $question->answers->count()
+        // foreach ($question->answers as $answer)
+    }
+
 }
