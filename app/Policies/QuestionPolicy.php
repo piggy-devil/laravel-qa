@@ -25,8 +25,10 @@ class QuestionPolicy
      */
     public function delete(User $user, Question $question)
     {
-        // dd($question->answers);
-        return $user->id === $question->user_id && $question->answers < 1;
+        // $collapsed = $collection->collapse();
+        // dd($question->answers->count());
+        // dd($question->user_id);
+        return $user->id === $question->user_id && $question->answers->count() < 1;
     }
 
 }
