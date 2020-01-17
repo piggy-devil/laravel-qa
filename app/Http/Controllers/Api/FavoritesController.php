@@ -7,6 +7,7 @@ class FavoritesController extends Controller
 {
     public function store(Question $question)
     {
+        // dd('xxx');
         $question->favorites()->attach(auth()->id());
         return response()->json(null, 204);
     }

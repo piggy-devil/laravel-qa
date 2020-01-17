@@ -6,11 +6,13 @@ import destory from './destroy';
 
 export default {
     mixins: [highlight, destory],
+
     components: {
         Vote,
         UserInfo,
         MEditor
     },
+
     data() {
         return {
             editing: false
@@ -52,7 +54,6 @@ export default {
                 .then(() => this.highlight());
         },
 
-        payload() {},
-
+        payload() {}
     }
 }
