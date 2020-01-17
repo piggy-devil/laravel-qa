@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Question;
 class FavoritesController extends Controller
 {
+
     public function store(Question $question)
     {
         // dd('xxx');

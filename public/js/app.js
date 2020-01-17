@@ -12071,6 +12071,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
+
+    _event_bus__WEBPACK_IMPORTED_MODULE_1__["default"].$on('answers-count-changed', function (count) {
+      _this.question.answers_count = count;
+    });
+  },
   props: ['question'],
   mixins: [_mixins_modification__WEBPACK_IMPORTED_MODULE_0__["default"]],
   data: function data() {
@@ -12081,13 +12088,6 @@ __webpack_require__.r(__webpack_exports__);
       id: this.question.id,
       beforeEditCache: {}
     };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    _event_bus__WEBPACK_IMPORTED_MODULE_1__["default"].$on('answers-count-changed', function (count) {
-      _this.question.answers_count = count;
-    });
   },
   computed: {
     isInvalid: function isInvalid() {
@@ -12848,6 +12848,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/questions/".concat(this.slug)).then(function (_ref) {
         var data = _ref.data;
+        console.log(data.data);
         _this.question = data.data;
       })["catch"](function (error) {
         return console.log(error);

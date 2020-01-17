@@ -24,6 +24,7 @@ export default {
         fetchQuestion () {
             axios.get(`/questions/${this.slug}`)
                  .then(({ data }) => {
+                     console.log(data.data);
                      this.question = data.data
                  })
                  .catch(error => console.log(error))

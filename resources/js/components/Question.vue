@@ -61,8 +61,12 @@
 <script>
 import modification from '../mixins/modification';
 import EventBus from '../event-bus';
-
 export default {
+    mounted () {
+        EventBus.$on('answers-count-changed', (count) => {
+            this.question.answers_count = count;
+        })
+    },
     props: ['question'],
     mixins: [modification],
     data () {
@@ -73,11 +77,6 @@ export default {
             id: this.question.id,
             beforeEditCache: {}
         }
-    },
-    mounted () {
-        EventBus.$on('answers-count-changed', (count) => {
-            this.question.answers_count = count;
-        })
     },
     computed: {
         isInvalid () {
